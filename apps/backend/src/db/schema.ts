@@ -12,16 +12,7 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 
-/**
- * User
-----
-id -- should be UUID
-username -- should be unique, not null, 30 chars is plenty
-email -- should be unique, nullable
-password_hash -- nullable
-created_at -- use timestamp and not null, default to now
-updated_at -- use timestamp and not null, default to now
- */
+
 export const users = pgTable("users", {
   id: uuid("id").defaultRandom().primaryKey(),
   username: varchar("username", { length: 30 }).notNull().unique(),
@@ -34,17 +25,7 @@ export const users = pgTable("users", {
     .notNull(),
 });
 
-/**
- *  * Lobby
- * ------
- * id -- should be UUID
- * host_id -- foreign key to users.id, not null
- * status -- should be an enum with values "waiting", "in_progress", "finished", not null
- * room_code -- should be unique, not null, 6 chars
- * max_players -- should be an integer, not null, default to 4
- * created_at -- use timestamp and not null, default to now
- * updated_at -- use timestamp and not null, default to now
- */
+
 
 export const LobbyStatusEnum = pgEnum("lobby_status", [
   "WAITING",
@@ -73,16 +54,6 @@ export const lobbies = pgTable("lobbies", {
     .notNull(),
 });
 
-/**
- *  LobbyPlayer
------------
-lobby_id - foreign key to lobbies.id, not null
-user_id - foreign key to users.id, not null
-is_ready - boolean, not null, default to false
-joined_at - use timestamp and not null, default to now
-
-- LobbyPlayer should have a unique constraint on (lobby_id, user_id)
- */
 
 export const lobbyPlayers = pgTable(
   "lobby_players",
@@ -104,21 +75,7 @@ export const lobbyPlayers = pgTable(
   ],
 );
 
-/**
 
- * Game
- * -----
- * id -- should be UUID
- * lobby_id -- foreign key to lobbies.id, not null
- * status -- should be an enum with values "waiting", "in_progress", "finished", not null
- * winner_id -- foreign key to users.id, nullable
- * started_at -- use timestamp and not null, default to now
- * ended_at -- use timestamp and nullable
- * created_at -- use timestamp and not null, default to now
- * updated_at -- use timestamp and not null, default to now
-
-- Game status can be: in_progress, finished
-*/
 
 export const GameStatusEnum = pgEnum("game_status", [
   "IN_PROGRESS",
@@ -143,19 +100,6 @@ export const games = pgTable("games", {
     .notNull(),
 });
 
-/**
- * GamePlayer
- * -----------
- * game_id -- foreign key to games.id, not null, on delete cascade
- * user_id -- foreign key to users.id, not null, on delete cascade
- * score -- integer, not null, default to 0
- * player_order -- integer, not null
- * joined_at -- use timestamp and not null, default to now
-
-- GamePlayer should have a unique constraint on (game_id, user_id)
-- score is an integer representing the player's score in the game
-- player_order is an integer indicating the player's order in the game (1, 2, 3, ...) 
-*/
 
 export const gamePlayers = pgTable(
   "game_players",
@@ -177,15 +121,7 @@ export const gamePlayers = pgTable(
   ],
 );
 
-/**
- * Card
- * -----
- * id -- should be integer, primary key (matches the id in compact.json)
- * type -- should be an enum with values "WHITE", "BLACK", not null
- * text -- should be text, not null
- * pick -- should be integer, nullable (only for black cards)
- * created_at -- use timestamp and not null, default to now
- */
+
 
 export const CardTypeEnum = pgEnum("card_type", ["WHITE", "BLACK"]);
 
@@ -197,28 +133,13 @@ export const cards = pgTable("cards", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
-/**
- * CardPack
- * -----
- * id -- should be integer, primary key (matches the id in compact.json)
- * name -- should be text, not null
- * official -- should be boolean, not null
- */
+
 export const cardPacks = pgTable("card_packs", {
   id: integer("id").primaryKey(), // 10, 23, 62... as in compact.json
   name: text("name").notNull(),
   official: boolean("official").notNull(),
 });
 
-/**
- * CardPackCards
- * -----
- * pack_id -- foreign key to card_packs.id, not null
- * card_id -- foreign key to cards.id, not null
- *
- * - Composite primary key on (pack_id, card_id)
- * - Makes importing card packs easier, as we can just insert the pack and then insert the cards with the pack_id
- */
 
 export const cardPackCards = pgTable(
   "card_pack_cards",
@@ -237,24 +158,3 @@ export const cardPackCards = pgTable(
     }),
   ],
 );
-
-/**
- * Round
- * -----
- * id -- should be UUID
- * game_id -- foreign key to games.id, not null
- * round_number -- should be integer, not null
- * black_card_id -- foreign key to cards.id, not null
- * winner_id -- foreign key to game_players.id, nullable
- * judge_id -- foreign key to game_players.id, nullable
- * status -- should be an enum with values "waiting", "in_progress", "finished", not null
- * started_at -- use timestamp and not null, default to now
- * ended_at -- use timestamp and nullable
-
- - Round should have a unique constraint on (game_id, round_number)
- - Round status can be: playing, reveal, finished
- - judge_id is the user_id of the player who is the judge for this round (can be null if not assigned yet)
- - black card is randomly selected from the black card deck for this round
- */
-
-
