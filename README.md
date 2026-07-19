@@ -72,7 +72,7 @@ The lobby host picks a mode; the server applies it through a strategy pattern, s
 |------|--------------|
 | **Normal** | The classic rules. A rotating Czar judges; the funniest submission wins a point. |
 | **Rando Cardrissian** | A random card is auto-submitted from the deck each round. If the Czar picks Rando, nobody wins the round. |
-| **Czar Is Dead** | No judge at all. Every player votes for their favorite submission. Most votes wins a point. |
+| **Czar Is Dead** | No Czar at all. Every player votes for their favorite submission. Most votes wins a point. |
 | **Blank Only** | No real cards — every player writes their own answer on blank cards each round. Same scoring as Normal. Bots are disabled in this mode |
 
 ### House rules
