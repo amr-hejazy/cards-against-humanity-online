@@ -1,0 +1,16 @@
+{
+  "name": "@cah/shared",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "node ../../node_modules/tsup/dist/cli-default.js",
+    "dev": "tsup --watch",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "tsup": "^8.4.0",
+    "typescript": "^6.0.3"
+  }
+}

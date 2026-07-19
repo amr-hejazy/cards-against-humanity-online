@@ -1,0 +1,25 @@
+{
+  "name": "cah-online",
+  "packageManager": "npm@11.12.1",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "test": "turbo test",
+    "check-types": "turbo check-types",
+    "lint": "turbo lint",
+    "db:seed": "turbo db:seed --filter=@cah/backend",
+    "format": "turbo format"
+  },
+  "dependencies": {
+    "tsup": "^8.4.0",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "turbo": "^2.6.0"
+  }
+}

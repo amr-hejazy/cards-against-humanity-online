@@ -1,0 +1,90 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1782736283214,
+      "tag": "0000_goofy_joseph",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1782737319725,
+      "tag": "0001_stormy_mongoose",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1782738044098,
+      "tag": "0002_jazzy_veda",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1782857747289,
+      "tag": "0003_plain_stingray",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1782941690271,
+      "tag": "0004_jazzy_nico_minoru",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1783340500670,
+      "tag": "0005_groovy_winter_soldier",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1783340500671,
+      "tag": "0006_drop_rounds",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1784293050912,
+      "tag": "0007_yellow_warpath",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1721300000000,
+      "tag": "0008_add_blank_cards_enabled",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1721300000001,
+      "tag": "0009_add_house_rules",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1721400000000,
+      "tag": "0010_add_round_timeout_seconds",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1721500000000,
+      "tag": "0011_add_mode_config",
+      "breakpoints": true
+    }
+  ]
+}
