@@ -5,6 +5,8 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript&logoColor=white)
 ![License](https://img.shields.io/badge/license-CC%20BY--NC--SA-informational)
 
+**▶ Play it now:** https://cards-against-humanity-returns-back.vercel.app/
+
 A full-stack, real-time multiplayer implementation of Cards Against Humanity built with React, Node.js, PostgreSQL, and Socket.IO. Players can create lobbies, share room codes, and play complete games together entirely in the browser.
 
 This project is a **free, fan-made, non-commercial clone built for fun**. It is not affiliated with or endorsed by Cards Against Humanity LLC. See [License & Attribution](#license--attribution) for details.
