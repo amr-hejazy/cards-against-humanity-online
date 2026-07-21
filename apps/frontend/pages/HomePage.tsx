@@ -4,10 +4,10 @@ import axios from "axios";
 import { toast } from "sonner";
 import { SERVER_URL, getSocket } from "../lib/socket";
 import { useStore } from "../lib/store";
-import { ArrowRight } from "lucide-react";
-// import { HelpCircle, Settings } from "lucide-react";
+import { ArrowRight, HelpCircle } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { TermsModal, BuyGameModal } from "../components/LegalModals";
+import HowToPlayModal from "../components/HowToPlayModal";
 
 export default function HomePage() {
   // Access the token, username, setAuth, hasSetUsername from the store
@@ -20,6 +20,7 @@ export default function HomePage() {
   const [showUsernameInput, setShowUsernameInput] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
   const [showBuy, setShowBuy] = useState(false);
+  const [showRules, setShowRules] = useState(false);
 
   useEffect(() => {
     // call the /auth/me endpoint to validate the token (ensure it's not expired n stuff). If the token is invalid, reset the store to clear it out.
@@ -149,8 +150,13 @@ export default function HomePage() {
           CARDS AGAINST HUMANITY
         </span>
         <div className="flex gap-4">
-          {/* Help button removed — unused */}
-          {/* Settings button removed — unused */}
+          <button
+            className="hover:opacity-60 transition-opacity"
+            onClick={() => setShowRules(true)}
+            aria-label="How to play"
+          >
+            <HelpCircle className="size-6" />
+          </button>
         </div>
       </header>
 
@@ -274,6 +280,7 @@ export default function HomePage() {
 
       <TermsModal open={showTerms} onClose={() => setShowTerms(false)} />
       <BuyGameModal open={showBuy} onClose={() => setShowBuy(false)} />
+      <HowToPlayModal open={showRules} onClose={() => setShowRules(false)} />
     </div>
   );
 }
